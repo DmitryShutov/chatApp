@@ -1,0 +1,8 @@
+.login {
+  display: flex;
+  justify-content: center;
+  padding-top: 30vh;
+  &__form {
+    min-width: 320px;
+  }
+}

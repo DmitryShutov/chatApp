@@ -1,0 +1,14 @@
+.position {
+  &__center {
+    text-align: center;
+  }
+  &__vertical {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.w90 {
+  width: 90%;
+}
+
