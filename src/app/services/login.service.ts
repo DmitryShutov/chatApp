@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, URLSearchParams} from "@angular/http";
+import {Http, Response, URLSearchParams, Headers} from "@angular/http";
 import {Observable} from "../../../node_modules/rxjs/Observable";
 import { baseUrl } from './baserUrl';
 
@@ -10,13 +10,11 @@ export class LoginService {
 
   constructor(private http: Http) { }
 
-  login(login, password) {
-    let params = new URLSearchParams();
-    params.set('username', login);
-    params.set('password', password);
-    return this.http.get(this.loginUrl, {params})
-                    .map(this.extractData)
-                    .catch(this.handleError)
+  sendLoginData(user: any) {
+    const body = JSON.stringify(user);
+    console.log(user);
+    return this.http.post(this.loginUrl, body)
+      .map((data: Response) => data.json());
   }
 
   extractData(response: Response) {
