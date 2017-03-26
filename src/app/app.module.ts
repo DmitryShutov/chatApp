@@ -9,6 +9,9 @@ import {RouterModule} from "@angular/router";
 import {LoginComponent} from './login/login.component';
 
 import { appRoutes } from './app.routes'
+import {RestangularModule} from "../../node_modules/ng2-restangular/dist/esm/src/ng2-restangular.module";
+
+import { RestangularConfigFactory } from './services/restangular/restangularConf';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { appRoutes } from './app.routes'
     MaterialModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
+    RestangularModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
