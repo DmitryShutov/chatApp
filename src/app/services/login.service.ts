@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, URLSearchParams, Headers} from "@angular/http";
+import {Response} from "@angular/http";
 import {Observable} from "../../../node_modules/rxjs/Observable";
-import { baseUrl } from './baserUrl';
+import {ApiService} from "./api/api.service";
 
 @Injectable()
 export class LoginService {
 
-  private loginUrl = `${baseUrl}/user/login`;
-
-  constructor(private http: Http) { }
+  constructor(private http: ApiService) { }
 
   sendLoginData(user: any) {
-    const body = JSON.stringify(user);
-    console.log(user);
-    return this.http.post(this.loginUrl, body)
+    const url = '/user/login';
+    return this.http.post(url, user)
       .map((data: Response) => data.json());
   }
 
