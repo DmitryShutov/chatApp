@@ -23,13 +23,8 @@ import {ApiService} from "./services/api/api.service";
     HttpModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
-    RestangularModule.forRoot(RestangularConfigFactory),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-export function RestangularConfigFactory (RestangularProvider) {
-  RestangularProvider.setBaseUrl('http://172.30.3.179:8085');
-}

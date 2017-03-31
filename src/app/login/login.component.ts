@@ -13,8 +13,7 @@ export class LoginComponent{
 
   tryToLogin(login: string, password: string) {
     if (login && password) {
-      const user = { username: login, password };
-      this.loginService.sendLoginData(user)
+      this.loginService.sendLoginData(login, password)
         .subscribe(
           credentials => console.log(credentials),
           error => console.log(error));
