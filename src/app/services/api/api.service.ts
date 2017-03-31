@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Restangular } from 'ng2-restangular';
+import {Http, Headers, RequestOptions } from "@angular/http";
+import {baseUrl} from "../baserUrl";
 
 @Injectable()
 export class ApiService {
 
-  constructor(private rest: Restangular) {
+  constructor(private http: Http) {
   }
 
   get(url, params = null) {
-    return this.rest.one(url).get(params);
+    return this.get(url).get(params);
   }
 
-  post(url, data = {}) {
-    return this.rest.all(url).customPOST(data, undefined, undefined, {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+  post(url, body = {}) {
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let options = new RequestOptions({ headers: headers });
+    let postUrl = `${baseUrl}/${url}`;
+    let requestBody = JSON.stringify(body).replace(/\"/g, "");
+    console.log(requestBody);
+    return this.http.post(url, requestBody,  options);
   }
 }

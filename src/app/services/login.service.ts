@@ -6,14 +6,14 @@ import {ApiService} from "./api/api.service";
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http) { }
+  constructor(private http: ApiService) { }
 
   sendLoginData(login: string, password: string) {
     const body = `username=${login}&password=${password}`;
     let url = 'http://172.30.3.179:8085/user/login';
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(url, body,  options)
+    return this.http.post(url, body)
       .map((data: Response) => data.json());
   }
 
