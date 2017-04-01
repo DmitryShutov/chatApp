@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../services/login.service";
-import {FormControl} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
+import { User } from "./login.interface";
 
 @Component({
   selector: 'app-login',
@@ -8,21 +10,26 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./login.component.css'],
   providers: [LoginService],
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService) { }
+  user: FormGroup;
 
-  username = new FormControl();
-  password = new FormControl();
-
-  tryToLogin() {
-    console.log(this.username);
-    if (this.username.value && this.username.value.length > 0 && this.password.value && this.password.value.length > 0) {
-      this.loginService.sendLoginData(this.username.value, this.password.value)
-        .subscribe(
-          credentials => console.log(credentials),
-          error => console.log(error));
-    }
+  ngOnInit(){
+    this.user = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    })
   }
+
+  onSubmit({value, valid}: {value: User, valid: boolean}) {
+    console.log('press');
+    console.log(value);
+    this.loginService.sendLoginData(value.username, value.password)
+      .subscribe(
+        credentials => console.log(credentials),
+        error => console.log(error));
+  }
+
 
 }

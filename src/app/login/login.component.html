@@ -1,6 +1,9 @@
 <div class="login">
   <div class="login__form">
-    <form novalidate>
+    <form
+      novalidate
+      [formGroup]="user"
+      (ngSubmit)="onSubmit(user)">
     <md-card class="position__center login__form-card">
       <md-card-title>Авторизация</md-card-title>
       <md-card-content class="position__vertical">
@@ -8,20 +11,21 @@
           <input
             mdInput
             placeholder="Логин"
-            [formControl]="username">
+            formControlName="username">
         </md-input-container>
         <md-input-container class="w90">
           <input
             mdInput
             placeholder="Пароль"
             type="password"
-            [formControl]="password">
+            formControlName="password">
         </md-input-container>
       </md-card-content>
       <button
         md-raised-button
         class="w90"
-        (click)="tryToLogin()">
+        type="submit"
+        [disabled]="user.invalid">
         Войти
       </button>
     </md-card>

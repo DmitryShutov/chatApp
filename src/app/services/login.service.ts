@@ -9,7 +9,6 @@ export class LoginService {
   constructor(private api: ApiService) { }
 
   sendLoginData(username: string, password: string) {
-    console.log(username, password);
     const body = `username=${username}&password=${password}`;
     let url = 'user/login';
     return this.api.post(url, body)
