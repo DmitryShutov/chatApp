@@ -1,5 +1,6 @@
 <div class="login">
   <div class="login__form">
+    <form novalidate>
     <md-card class="position__center login__form-card">
       <md-card-title>Авторизация</md-card-title>
       <md-card-content class="position__vertical">
@@ -7,23 +8,24 @@
           <input
             mdInput
             placeholder="Логин"
-            #login>
+            [formControl]="username">
         </md-input-container>
         <md-input-container class="w90">
           <input
             mdInput
             placeholder="Пароль"
             type="password"
-            #password>
+            [formControl]="password">
         </md-input-container>
       </md-card-content>
       <button
         md-raised-button
         class="w90"
-        (click)="tryToLogin(login.value, password.value)">
+        (click)="tryToLogin()">
         Войти
       </button>
     </md-card>
+    </form>
   </div>
 </div>
 

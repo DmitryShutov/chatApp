@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import {Response, Http, RequestOptions, Headers} from "@angular/http";
+import {Response} from "@angular/http";
 import {Observable} from "../../../node_modules/rxjs/Observable";
 import {ApiService} from "./api/api.service";
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: ApiService) { }
+  constructor(private api: ApiService) { }
 
-  sendLoginData(login: string, password: string) {
-    const body = `username=${login}&password=${password}`;
-    let url = 'http://172.30.3.179:8085/user/login';
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(url, body)
+  sendLoginData(username: string, password: string) {
+    console.log(username, password);
+    const body = `username=${username}&password=${password}`;
+    let url = 'user/login';
+    return this.api.post(url, body)
       .map((data: Response) => data.json());
   }
 

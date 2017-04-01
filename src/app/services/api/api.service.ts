@@ -9,15 +9,15 @@ export class ApiService {
   }
 
   get(url, params = null) {
-    return this.get(url).get(params);
+    return this.get(url, params);
   }
 
   post(url, body = {}) {
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    console.log(baseUrl);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let postUrl = `${baseUrl}/${url}`;
-    let requestBody = JSON.stringify(body).replace(/\"/g, "");
-    console.log(requestBody);
-    return this.http.post(url, requestBody,  options);
+    let requestBody = JSON.stringify(body);
+    return this.http.post(postUrl, requestBody,  options);
   }
 }

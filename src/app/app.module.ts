@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RestangularModule } from 'ng2-restangular';
 
 import { AppComponent } from './app.component';
 import {MaterialModule} from "@angular/material";
@@ -11,6 +10,7 @@ import {LoginComponent} from './login/login.component';
 
 import { appRoutes } from './app.routes'
 import {ApiService} from "./services/api/api.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import {ApiService} from "./services/api/api.service";
     HttpModule,
     MaterialModule,
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
