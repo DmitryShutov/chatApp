@@ -1,3 +1,13 @@
-<p>
-  contacts-list works!
-</p>
+<div class="user-list">
+  <div *ngFor="let user of userList">
+    <md-card class="user-list__card" *ngIf="user.displayname">
+      <img [src]="'data:image/jpg;base64,' + user.thumbnailphoto"
+            *ngIf="user.thumbnailphoto"
+            class="user-list__photo">
+      <span class="user-list__photo-default"
+            *ngIf="!user.thumbnailphoto">?</span>
+      <md-card-subtitle class="user-list__name">{{user.displayname}}</md-card-subtitle>
+    </md-card>
+  </div>
+</div>
+

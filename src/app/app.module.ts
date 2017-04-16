@@ -15,6 +15,7 @@ import { MainScreenComponent } from './components/main-screen/main-screen.compon
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import {UserService} from './services/user.service';
 import {UserDataService} from './services/user-data.service';
+import { PaginatorDirective } from './directives/paginator.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {UserDataService} from './services/user-data.service';
     LoginComponent,
     MainScreenComponent,
     ContactsListComponent,
+    PaginatorDirective,
   ],
   imports: [
     BrowserModule,

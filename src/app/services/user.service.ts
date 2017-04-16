@@ -18,8 +18,8 @@ export class UserService {
       .map((data: Response) => data.json());
   }
 
-  getUserList() {
-    return this.api.get(this.userUrl)
+  getUserList(page: number = 0, perPage: number = 50) {
+    return this.api.get(`${this.userUrl}?page=${page}&per-page=${perPage}`)
       .map((data: Response) => data.json());
   }
 

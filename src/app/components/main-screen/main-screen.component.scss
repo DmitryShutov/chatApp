@@ -1,3 +1,13 @@
 .main-component {
+  max-height: 90vh;
+  overflow: hidden;
   display: flex;
+  justify-content: center;
+  .user-list {
+    max-width: 400px;
+    overflow-y: scroll;
+    border: 1px solid #e1e1e1;
+  }
+  .chat-window {
+  }
 }
