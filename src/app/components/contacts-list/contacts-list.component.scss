@@ -1,4 +1,6 @@
 .user-list {
+  overflow-y: scroll;
+  max-height: 100%;
   &__card {
     padding: 15px;
     display: flex;

@@ -9,8 +9,8 @@ import { PaginatorDirective } from '../../directives/paginator.directive';
 })
 export class ContactsListComponent implements OnInit {
 
-  userList: string[];
-  page: number = 0;
+  private userList: Array<object> = [];
+  page: number = 1;
 
   constructor(private userService: UserService) {
 
@@ -21,6 +21,7 @@ export class ContactsListComponent implements OnInit {
   }
 
   getNextUsers($event) {
+    console.log($event);
     this.page++;
     this.getUserList();
   }
@@ -28,7 +29,7 @@ export class ContactsListComponent implements OnInit {
   getUserList() {
     this.userService.getUserList(this.page)
       .subscribe(
-        (userList) =>  { this.userList = userList; },
+        (users) =>  { console.log(users); this.userList.push(...users); console.log(this.userList); },
         error => console.error(error)
       );
   }
