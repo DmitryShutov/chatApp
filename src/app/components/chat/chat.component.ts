@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Chat} from '../../classes/chat';
+import {ChatService} from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -7,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  chat;
+  currentChat: Chat;
 
-  constructor() { }
+  constructor(private ChatService: ChatService) { }
 
   ngOnInit() {
-
+    this.currentChat = this.ChatService.getCurrentChat();
   }
+
+  
 
 }

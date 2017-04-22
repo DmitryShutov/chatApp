@@ -22,8 +22,4 @@ export class UserService {
     return this.api.get(`${this.userUrl}?page=${page}&per-page=${perPage}`)
       .map((data: Response) => data.json());
   }
-
-
-
-
 }

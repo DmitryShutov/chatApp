@@ -1,6 +1,8 @@
 <div class="user-list" appPaginator (onScrollDown)="getNextUsers($event)">
   <div *ngFor="let user of userList">
-    <md-card class="user-list__card" *ngIf="user.displayname">
+    <md-card class="user-list__card"
+             *ngIf="user.displayname"
+             (click)="onUserSelect(user)">
       <img [src]="'data:image/jpg;base64,' + user.thumbnailphoto"
             *ngIf="user.thumbnailphoto"
             class="user-list__photo">

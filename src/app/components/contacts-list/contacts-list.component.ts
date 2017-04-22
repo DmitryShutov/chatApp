@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import { PaginatorDirective } from '../../directives/paginator.directive';
+import {Chat} from '../../classes/chat';
+import {ChatService} from '../../services/chat.service';
+import {User} from '../../classes/user';
+import {current} from 'codelyzer/util/syntaxKind';
 
 @Component({
   selector: 'app-contacts-list',
@@ -12,8 +16,9 @@ export class ContactsListComponent implements OnInit {
   private userList: Array<object> = [];
   private page: number = 1;
   private end: boolean = false;
+  private currentChat: Chat;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private ChatService: ChatService) {
 
   }
 
@@ -41,5 +46,10 @@ export class ContactsListComponent implements OnInit {
         },
         error => console.error(error)
       );
+  }
+
+  onUserSelect(user: User) {
+    this.currentChat = new Chat([user.id], user.displayname);
+    this.ChatService.setCurrentChat(this.currentChat);
   }
 }
