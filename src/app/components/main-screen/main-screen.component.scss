@@ -1,12 +1,16 @@
 .main-component {
+  max-width: 800px;
   max-height: 90vh;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
   .user-list {
     max-width: 400px;
     border: 1px solid #e1e1e1;
   }
-  .chat-window {
+  .chat {
+    flex-grow: 1;
   }
 }

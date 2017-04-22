@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, RequestOptions} from "@angular/http";
+import {Http, RequestOptions, Headers} from "@angular/http";
 import {baseUrl} from "../baserUrl";
 import {UserDataService} from '../user-data.service';
 
@@ -7,22 +7,24 @@ import {UserDataService} from '../user-data.service';
 export class ApiService {
 
   token: string;
+  headers = new Headers();
 
   constructor(private http: Http, private UserData: UserDataService) {
     this.token = this.UserData.getToken();
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.headers.append('X-Token', `${this.token}`);
   }
 
   get(url, data = null) {
-    const getUrl = `${baseUrl}/${url}?auth_key=${this.token}`;
+    const getUrl = `${baseUrl}/${url}`;
     let params = new URLSearchParams();
     for(let key in data) {
       params.set(key, data[key]);
     }
-    params.set('auth_key', this.token);
     let options = new RequestOptions({
-      search: params
+      headers: this.headers,
     });
-    return this.http.get(getUrl, params);
+    return this.http.get(getUrl, options);
   }
 
   post(url, body = {}) {

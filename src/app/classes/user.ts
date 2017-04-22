@@ -16,7 +16,6 @@ export class User implements IUser{
   veryfied: boolean;
 
   constructor(user: IUser) {
-    this.auth_key = user.auth_key;
     this.cn = user.cn;
   }
 

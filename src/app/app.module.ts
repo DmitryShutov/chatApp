@@ -16,6 +16,8 @@ import { ContactsListComponent } from './components/contacts-list/contacts-list.
 import {UserService} from './services/user.service';
 import {UserDataService} from './services/user-data.service';
 import { PaginatorDirective } from './directives/paginator.directive';
+import { ChatComponent } from './components/chat/chat.component';
+import {ChatService} from './services/chat.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { PaginatorDirective } from './directives/paginator.directive';
     MainScreenComponent,
     ContactsListComponent,
     PaginatorDirective,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { PaginatorDirective } from './directives/paginator.directive';
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
   ],
-  providers: [ApiService, UserDataService,UserService],
+  providers: [ApiService, UserDataService, UserService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
