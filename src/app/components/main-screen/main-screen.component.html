@@ -1,5 +1,10 @@
 <div class="main-component">
-  <app-contacts-list class="user-list"></app-contacts-list>
-  <app-chat class="chat"></app-chat>
+  <app-contacts-list class="user-list"
+                     (onSelectUser)="onSelectuser($event)"
+  ></app-contacts-list>
+  <app-chat class="chat"
+            *ngIf="currentChat"
+            [currentChat]="currentChat"
+  ></app-chat>
 </div>
 

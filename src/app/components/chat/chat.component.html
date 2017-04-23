@@ -1,3 +1,24 @@
 <md-card class="chat__main">
-  <md-card></md-card>
+  <md-card-subtitle>{{currentChat.name}}</md-card-subtitle>
+  <div class="chat__main-window">
+
+  </div>
+  <form>
+    <md-input-container>
+        <textarea
+          mdInput
+          placeholder="Ваше сообщение"
+          type="text"
+          formControlName="message">
+        </textarea>
+    </md-input-container>
+    <button
+      md-raised-button
+      type="submit"
+      [disabled]="message.length === 0">
+      Отправить
+    </button>
+  </form>
+
+
 </md-card>

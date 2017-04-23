@@ -1,5 +1,14 @@
 .chat__main {
   border: 1px solid #e1e1e1;
   height: calc(100% - 50px);
-  padding: 24px 0;
+  padding: 24px 10px;
+  display: flex;
+  flex-direction: column;
+  &-card {
+
+  }
+  &-window {
+    flex-grow: 1;
+    background-color: greenyellow;
+  }
 }

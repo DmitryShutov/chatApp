@@ -1,8 +1,8 @@
 export class Chat {
-  private usersIds;
+  private userIds;
   private name;
-  constructor(usersIds: number[], name: string) {
-    this.usersIds = usersIds;
+  constructor(userIds: number[], name: string) {
+    this.userIds = userIds;
     this.name = name;
   }
 }

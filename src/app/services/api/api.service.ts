@@ -15,13 +15,14 @@ export class ApiService {
     this.headers.append('X-Token', `${this.token}`);
   }
 
+
   get(url, data = null) {
     const getUrl = `${baseUrl}/${url}`;
     let params = new URLSearchParams();
     for(let key in data) {
       params.set(key, data[key]);
     }
-    let options = new RequestOptions({
+    const options = new RequestOptions({
       headers: this.headers,
     });
     return this.http.get(getUrl, options);
@@ -29,6 +30,9 @@ export class ApiService {
 
   post(url, body = {}) {
     let postUrl = `${baseUrl}/${url}`;
-    return this.http.post(postUrl, body);
+    const options = new RequestOptions({
+      headers: this.headers,
+    });
+    return this.http.post(postUrl, body, options);
   }
 }

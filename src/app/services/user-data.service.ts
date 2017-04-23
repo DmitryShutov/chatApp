@@ -9,15 +9,17 @@ export class UserDataService {
 
   setUser(user: User) {
     this.user = user;
-    localStorage.setItem('user', JSON.stringify({ token: this.user.auth_key, name: this.user.cn }));
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser():User {
-    return this.user;
+  getUser() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    console.log('user', user);
+    return user;
   }
 
   getToken() {
-    return JSON.parse(localStorage.getItem('user')).token;
+    return JSON.parse(localStorage.getItem('user')).auth_key;
   }
 
 }

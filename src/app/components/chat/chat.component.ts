@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Chat} from '../../classes/chat';
 import {ChatService} from '../../services/chat.service';
+import {FormControl, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-chat',
@@ -9,14 +11,33 @@ import {ChatService} from '../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  currentChat: Chat;
+  @Input() currentChat: Chat;
+  message: FormGroup;
 
-  constructor(private ChatService: ChatService) { }
+ constructor(private ChatService: ChatService) {
+ }
 
   ngOnInit() {
-    this.currentChat = this.ChatService.getCurrentChat();
+   this.ChatService.createChat()
+     .subscribe(
+       (response) =>  {
+         console.log(response);
+       },
+       error => console.error(error)
+     );
+
+    this.message = new FormGroup({
+      message: new FormControl(''),
+    });
   }
 
-  
+  onSubmit({value}: {value}) {
+    this.ChatService.sendMessage(value)
+      .subscribe(
+        (response) => console.log(response),
+        error => console.log(error));
+  }
+
+
 
 }

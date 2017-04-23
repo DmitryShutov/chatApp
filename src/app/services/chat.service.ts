@@ -1,24 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {ApiService} from './api/api.service';
 import {Response} from "@angular/http";
 import {Chat} from '../classes/chat';
 
 @Injectable()
-export class ChatService {
+export class ChatService implements OnInit {
 
-  chatUrl = '/url';
+  chatUrl = 'chat';
   currentChat: Chat;
+
 
   constructor(private api: ApiService) { }
 
-  setCurrentChat(currentChat) {
-    this.currentChat = currentChat;
-  }
+  ngOnInit() {
 
-  createChat(userIds: number[], name: string) {
-    const body = {userIds, name};
-    return this.api.post(this.chatUrl, body)
-      .map((data: Response) => data.json());
   }
 
   getChat() {
@@ -28,5 +23,22 @@ export class ChatService {
 
   getCurrentChat(): Chat {
     return this.currentChat;
+  }
+
+  createChat() {
+    const body = this.currentChat;
+    return this.api.post(this.chatUrl, body)
+      .map((data: Response) => data.json());
+  }
+
+  sendMessage(message: string) {
+    const url = `${this.chatUrl}/message?expand=chat`;
+    const body = {text: message, chat_id: this.currentChat.id};
+    return this.api.post(url, body)
+      .map((data: Response) => data.json());
+  }
+
+  setCurrentChat(currentChat) {
+    this.currentChat = currentChat;
   }
 }
