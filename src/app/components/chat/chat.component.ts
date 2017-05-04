@@ -20,8 +20,9 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
    this.ChatService.createChat()
      .subscribe(
-       (response) =>  {
-         console.log(response);
+       (chat: Chat) =>  {
+         this.currentChat = chat;
+         this.ChatService.setCurrentChat(this.currentChat);
        },
        error => console.error(error)
      );
@@ -32,7 +33,8 @@ export class ChatComponent implements OnInit {
   }
 
   onSubmit({value}: {value}) {
-    this.ChatService.sendMessage(value)
+   console.log(value);
+    this.ChatService.sendMessage(value.message)
       .subscribe(
         (response) => console.log(response),
         error => console.log(error));

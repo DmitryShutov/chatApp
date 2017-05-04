@@ -3,7 +3,9 @@
   <div class="chat__main-window">
 
   </div>
-  <form>
+  <form novalidate
+        [formGroup]="message"
+        (ngSubmit)="onSubmit(message)">
     <md-input-container>
         <textarea
           mdInput

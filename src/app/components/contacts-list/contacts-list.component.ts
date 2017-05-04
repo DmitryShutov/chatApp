@@ -43,11 +43,11 @@ export class ContactsListComponent implements OnInit {
     this.userService.getUserList(this.page)
       .subscribe(
         (users) =>  {
-          if(users && users.length === 0) {
+          if(users && users.data && users.length === 0) {
             this.end = true;
             return;
           }
-          this.userList.push(...users);
+          this.userList.push(...users.data);
         },
         error => console.error(error)
       );
