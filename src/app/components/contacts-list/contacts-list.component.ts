@@ -21,13 +21,12 @@ export class ContactsListComponent implements OnInit {
 
   @Output() onSelectUser = new EventEmitter<Chat>();
 
-  constructor(private userService: UserService,
+  constructor(private UserService: UserService,
               private ChatService: ChatService,
               private UserDataService: UserDataService) {}
 
   ngOnInit() {
     this.getUserList();
-    console.log(this.UserDataService.getUser());
     this.currentUserId = this.UserDataService.getUser().id;
   }
 
@@ -40,7 +39,7 @@ export class ContactsListComponent implements OnInit {
   }
 
   getUserList() {
-    this.userService.getUserList(this.page)
+    this.UserService.getUserList(this.page)
       .subscribe(
         (users) =>  {
           if(users && users.data && users.length === 0) {
@@ -54,8 +53,7 @@ export class ContactsListComponent implements OnInit {
   }
 
   onUserSelect(user: User) {
-    console.log(user);
-    this.currentChat = new Chat([user.id], user.displayname);
+    this.currentChat = new Chat([this.currentUserId, user.id], user.displayname);
     this.ChatService.setCurrentChat(this.currentChat);
     this.onSelectUser.emit(this.currentChat);
   }

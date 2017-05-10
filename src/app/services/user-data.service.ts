@@ -3,13 +3,15 @@ import {User} from '../classes/user';
 
 @Injectable()
 export class UserDataService {
-
-  constructor() { }
   user: User;
 
-  setUser(user: User) {
-    this.user = user;
-    localStorage.setItem('user', JSON.stringify(user));
+  constructor() {
+  }
+
+  setUser(user) {
+    this.user = user.data;
+    localStorage.setItem('user', JSON.stringify(this.user));
+
   }
 
   getUser() {
@@ -19,7 +21,11 @@ export class UserDataService {
   }
 
   getToken() {
+    console.log(JSON.parse(localStorage.getItem('user')));
     return JSON.parse(localStorage.getItem('user')).auth_key;
   }
 
+  loggedIn() {
+    return !!this.getToken();
+  }
 }

@@ -13,7 +13,7 @@ import {UserDataService} from '../../services/user-data.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router, private userData: UserDataService) { }
+  constructor(private UserService: UserService, private router: Router, private UserDataService: UserDataService) { }
   userLogin: FormGroup;
   user: User;
 
@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
       username: value.username,
       password: value.password,
     };
-    this.userService.sendLoginData(credentials)
+    this.UserService.sendLoginData(credentials)
       .subscribe(
         (userData: User) => this.handleResponse(userData),
         error => console.log(error));
   }
 
   handleResponse(userData: User) {
-    this.userData.setUser(userData);
+    this.UserDataService.setUser(userData);
     this.router.navigate(['main-screen']);
   }
 

@@ -14,10 +14,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { MainScreenComponent } from './components/main-screen/main-screen.component';
 import { ContactsListComponent } from './components/contacts-list/contacts-list.component';
 import {UserService} from './services/user.service';
-import {UserDataService} from './services/user-data.service';
+import { UserDataService } from './services/user-data.service';
 import { PaginatorDirective } from './directives/paginator.directive';
 import { ChatComponent } from './components/chat/chat.component';
 import {ChatService} from './services/chat.service';
+import { ChatsListComponent } from './components/chats-list/chats-list.component';
+import {LoginGuardService} from './services/login-guard.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import {ChatService} from './services/chat.service';
     ContactsListComponent,
     PaginatorDirective,
     ChatComponent,
+    ChatsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import {ChatService} from './services/chat.service';
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
   ],
-  providers: [ApiService, UserDataService, UserService, ChatService],
+  providers: [ApiService, UserService, UserDataService, ChatService, LoginGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

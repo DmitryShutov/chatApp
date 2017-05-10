@@ -18,19 +18,35 @@ export class ChatComponent implements OnInit {
  }
 
   ngOnInit() {
-   this.ChatService.createChat()
-     .subscribe(
-       (chat: Chat) =>  {
-         this.currentChat = chat;
-         this.ChatService.setCurrentChat(this.currentChat);
-       },
-       error => console.error(error)
-     );
-
     this.message = new FormGroup({
       message: new FormControl(''),
     });
+    this.createChat();
+    // this.getChat();
   }
+
+  createChat() {
+    this.ChatService.createChat()
+      .subscribe(
+        (chat: Chat) =>  {
+          this.currentChat = chat;
+          this.ChatService.setCurrentChat(this.currentChat);
+        },
+        error => console.error(error)
+      );
+  }
+
+  /*
+  getChat() {
+   this.ChatService.getChat()
+     .subscribe(
+       (chat) => {
+         console.log(chat)
+       },
+       error => console.error(error)
+     )
+  }
+  */
 
   onSubmit({value}: {value}) {
    console.log(value);

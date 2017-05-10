@@ -4,7 +4,7 @@ import {Response} from "@angular/http";
 import {Chat} from '../classes/chat';
 
 @Injectable()
-export class ChatService implements OnInit {
+export class ChatService {
 
   chatUrl = 'chat';
   currentChat: Chat;
@@ -12,11 +12,7 @@ export class ChatService implements OnInit {
 
   constructor(private api: ApiService) { }
 
-  ngOnInit() {
-
-  }
-
-  getChat() {
+  getChatList() {
     return this.api.get(this.chatUrl)
       .map((data: Response) => data.json());
   }
