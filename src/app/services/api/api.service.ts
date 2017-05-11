@@ -18,7 +18,7 @@ export class ApiService {
 
   get(url, data = null) {
     const getUrl = `${baseUrl}/${url}`;
-    let params = new URLSearchParams();
+    const params = new URLSearchParams();
     for(let key in data) {
       params.set(key, data[key]);
     }
@@ -29,10 +29,18 @@ export class ApiService {
   }
 
   post(url, body = {}) {
-    let postUrl = `${baseUrl}/${url}`;
+    const postUrl = `${baseUrl}/${url}`;
     const options = new RequestOptions({
       headers: this.headers,
     });
     return this.http.post(postUrl, body, options);
+  }
+
+  delete(url) {
+    const deleteUrl = `${baseUrl}/${url}`;
+    const options = new RequestOptions({
+      headers: this.headers,
+    });
+    return this.http.delete(deleteUrl, options);
   }
 }

@@ -1,5 +1,11 @@
+<md-toolbar>{{currentChat.name}}
+  <a
+    md-mini-fab
+    class="chat__main-delete-chat"
+    (click)="onDeleteChat()"
+  ><i class="material-icons">delete</i></a>
+</md-toolbar>
 <md-card class="chat__main">
-  <md-card-subtitle>{{currentChat.name}}</md-card-subtitle>
   <div class="chat__main-window">
 
   </div>

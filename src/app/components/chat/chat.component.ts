@@ -22,10 +22,13 @@ export class ChatComponent implements OnInit {
       message: new FormControl(''),
     });
     this.createChat();
-    // this.getChat();
   }
 
   createChat() {
+    if (this.currentChat.id) {
+      this.ChatService.setCurrentChat(this.currentChat);
+      return;
+    }
     this.ChatService.createChat()
       .subscribe(
         (chat: Chat) =>  {
@@ -34,6 +37,17 @@ export class ChatComponent implements OnInit {
         },
         error => console.error(error)
       );
+  }
+
+  onDeleteChat() {
+   this.ChatService.deleteChat()
+     .subscribe(
+       (req) => {
+         console.log(req);
+         this.ChatService.dropCurrentChat();
+       },
+       (error) => console.error(error),
+     );
   }
 
   /*
@@ -49,7 +63,6 @@ export class ChatComponent implements OnInit {
   */
 
   onSubmit({value}: {value}) {
-   console.log(value);
     this.ChatService.sendMessage(value.message)
       .subscribe(
         (response) => console.log(response),

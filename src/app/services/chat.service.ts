@@ -21,6 +21,10 @@ export class ChatService {
     return this.currentChat;
   }
 
+  dropCurrentChat() {
+    this.currentChat = null;
+  }
+
   createChat() {
     const body = this.currentChat;
     return this.api.post(this.chatUrl, body)
@@ -36,5 +40,11 @@ export class ChatService {
 
   setCurrentChat(currentChat) {
     this.currentChat = currentChat;
+  }
+
+  deleteChat() {
+    const deleteUrl = `${this.chatUrl}/${this.currentChat.id}`;
+    return this.api.delete(deleteUrl)
+      .map((res: Response) => res.json().data);
   }
 }
