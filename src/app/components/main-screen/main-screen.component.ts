@@ -16,7 +16,7 @@ export class MainScreenComponent implements OnInit {
 
   }
 
-  onSelectuser(currentChat: Chat) {
+  onSelectChat(currentChat: Chat) {
     this.currentChat = currentChat;
   }
 

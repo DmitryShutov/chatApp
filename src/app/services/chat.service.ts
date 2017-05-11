@@ -14,7 +14,7 @@ export class ChatService {
 
   getChatList() {
     return this.api.get(this.chatUrl)
-      .map((data: Response) => data.json());
+      .map((res: Response) => res.json().data);
   }
 
   getCurrentChat(): Chat {
@@ -24,14 +24,14 @@ export class ChatService {
   createChat() {
     const body = this.currentChat;
     return this.api.post(this.chatUrl, body)
-      .map((data: Response) => data.json());
+      .map((res: Response) => res.json());
   }
 
   sendMessage(message: string) {
     const url = `${this.chatUrl}/message?expand=chat`;
     const body = {text: message, chat_id: this.currentChat.id};
     return this.api.post(url, body)
-      .map((data: Response) => data.json());
+      .map((res: Response) => res.json());
   }
 
   setCurrentChat(currentChat) {

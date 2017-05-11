@@ -19,7 +19,7 @@ export class ContactsListComponent implements OnInit {
   private currentChat: Chat;
   private currentUserId: number;
 
-  @Output() onSelectUser = new EventEmitter<Chat>();
+  @Output() onSelectChat = new EventEmitter<Chat>();
 
   constructor(private UserService: UserService,
               private ChatService: ChatService,
@@ -55,6 +55,6 @@ export class ContactsListComponent implements OnInit {
   onUserSelect(user: User) {
     this.currentChat = new Chat([this.currentUserId, user.id], user.displayname);
     this.ChatService.setCurrentChat(this.currentChat);
-    this.onSelectUser.emit(this.currentChat);
+    this.onSelectChat.emit(this.currentChat);
   }
 }

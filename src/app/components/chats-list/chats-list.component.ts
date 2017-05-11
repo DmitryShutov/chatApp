@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ChatService} from '../../services/chat.service';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { ChatService } from '../../services/chat.service';
+import { Chat } from '../../classes/chat';
 
 @Component({
   selector: 'app-chats-list',
@@ -7,6 +8,10 @@ import {ChatService} from '../../services/chat.service';
   styleUrls: ['./chats-list.component.scss']
 })
 export class ChatsListComponent implements OnInit {
+  chatList: Array<Chat>;
+  currentChat: Chat;
+
+  @Output() onSelectChat = new EventEmitter<Chat>();
 
   constructor(private ChatService: ChatService) { }
 
@@ -17,9 +22,15 @@ export class ChatsListComponent implements OnInit {
   getChatsList() {
     this.ChatService.getChatList()
       .subscribe(
-        list => console.log(list),
+        list => this.chatList = list,
         error => console.error(error),
       )
+  }
+
+  onChatSelect(chat) {
+    this.currentChat = chat;
+    this.ChatService.setCurrentChat(this.currentChat);
+    this.onSelectChat.emit(this.currentChat)
   }
 
 }

@@ -1,9 +1,11 @@
 <div class="main-component">
   <div class="user-list">
     <app-chats-list
+      (onSelectChat)="onSelectChat($event)"
     >
     </app-chats-list>
-    <app-contacts-list (onSelectUser)="onSelectuser($event)"
+    <app-contacts-list
+      (onSelectChat)="onSelectChat($event)"
     ></app-contacts-list>
   </div>
   <app-chat class="chat"

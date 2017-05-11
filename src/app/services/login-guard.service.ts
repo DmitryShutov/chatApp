@@ -8,7 +8,6 @@ export class LoginGuardService implements CanActivate {
   constructor(private UserDataService: UserDataService) { }
 
   canActivate() {
-    console.log(this.UserDataService.loggedIn());
     return this.UserDataService.loggedIn();
   }
 }

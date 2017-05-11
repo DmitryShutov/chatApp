@@ -16,12 +16,10 @@ export class UserDataService {
 
   getUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
-    console.log('user', user);
     return user;
   }
 
   getToken() {
-    console.log(JSON.parse(localStorage.getItem('user')));
     return JSON.parse(localStorage.getItem('user')).auth_key;
   }
 

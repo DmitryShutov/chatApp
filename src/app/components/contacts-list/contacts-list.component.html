@@ -1,3 +1,6 @@
+<md-toolbar>
+  <span>Контакты</span>
+</md-toolbar>
 <div class="user-list" appPaginator (onScrollDown)="getNextUsers($event)">
   <div *ngFor="let user of userList">
     <md-card class="user-list__card"
