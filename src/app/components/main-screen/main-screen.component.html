@@ -2,9 +2,11 @@
   <div class="user-list">
     <app-chats-list
       (onSelectChat)="onSelectChat($event)"
+      *ngIf="!showContacts"
     >
     </app-chats-list>
     <app-contacts-list
+      *ngIf="showContacts"
       (onSelectChat)="onSelectChat($event)"
     ></app-contacts-list>
   </div>

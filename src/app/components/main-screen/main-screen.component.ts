@@ -9,6 +9,7 @@ import {Chat} from '../../classes/chat';
 export class MainScreenComponent implements OnInit {
 
   currentChat: Chat;
+  showContacts = false;
 
   constructor() { }
 
@@ -19,6 +20,8 @@ export class MainScreenComponent implements OnInit {
   onSelectChat(currentChat: Chat) {
     this.currentChat = currentChat;
   }
+
+
 
 
 

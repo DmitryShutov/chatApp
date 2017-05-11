@@ -27,7 +27,7 @@ export class ChatsListComponent implements OnInit {
       )
   }
 
-  onChatSelect(chat) {
+  onChatSelect(chat: Chat) {
     this.currentChat = chat;
     this.ChatService.setCurrentChat(this.currentChat);
     this.onSelectChat.emit(this.currentChat)

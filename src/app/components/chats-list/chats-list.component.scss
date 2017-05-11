@@ -1,6 +1,9 @@
 .chat-list {
   overflow-y: scroll;
-  max-height: 100%;
+  &__wrapper {
+    position: relative;
+    max-height: 100%;
+  }
   &__card {
     padding: 15px;
     display: flex;
@@ -27,5 +30,13 @@
     display: flex;
     justify-content: center;
     color: white;
+  }
+  &__create-chat {
+    font-size: 32px;
+    font-weight: 100;
+    color: white;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
   }
 }

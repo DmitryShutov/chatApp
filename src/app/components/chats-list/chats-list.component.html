@@ -1,12 +1,19 @@
-<div class="chat-list">
-  <md-toolbar>
-    <span>Чаты</span>
-  </md-toolbar>
-  <div *ngFor="let chat of chatList">
-    <md-card class="chat-list__card"
-             *ngIf="chat.name"
-             (click)="onChatSelect(chat)">
-      <md-card-subtitle class="chat-list__name">{{chat.name}}</md-card-subtitle>
-    </md-card>
+<div class="chat-list__wrapper">
+  <div class="chat-list">
+    <md-toolbar>
+      <span>Чаты</span>
+    </md-toolbar>
+    <div *ngFor="let chat of chatList">
+      <md-card class="chat-list__card"
+               *ngIf="chat.name"
+               (click)="onChatSelect(chat)">
+        <md-card-subtitle class="chat-list__name">{{chat.name}}</md-card-subtitle>
+      </md-card>
+    </div>
   </div>
+  <a
+    md-mini-fab
+    class="chat-list__create-chat"
+    (click)="onCreateChat()"
+  >+</a>
 </div>
