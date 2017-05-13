@@ -20,7 +20,7 @@ export class UserDataService {
   }
 
   getToken() {
-    return JSON.parse(localStorage.getItem('user')).auth_key;
+    return JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).auth_key : null;
   }
 
   loggedIn() {
