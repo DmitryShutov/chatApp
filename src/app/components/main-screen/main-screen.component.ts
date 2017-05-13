@@ -12,10 +12,10 @@ export class MainScreenComponent implements OnInit {
 
   currentChat: Chat;
   showContactsList = false;
-  onShowContractsSubscribe: Subscription;
+  onShowContactsSubscribe: Subscription;
 
   constructor(private UIService: UIService) {
-    this.onShowContractsSubscribe = UIService.showContact$.subscribe(
+    this.onShowContactsSubscribe = UIService.showContact$.subscribe(
       isShow => {
         this.showContactsList = isShow;
       }
