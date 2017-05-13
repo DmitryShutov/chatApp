@@ -1,13 +1,13 @@
-<md-toolbar>{{currentChat.name}}
-  <a
-    md-mini-fab
+<md-toolbar
+  class="chat__main__header"
+>{{currentChat.name}}
+  <a md-mini-fab
     class="chat__main-delete-chat"
     (click)="onDeleteChat()"
   ><i class="material-icons">delete</i></a>
 </md-toolbar>
 <md-card class="chat__main">
   <div class="chat__main-window">
-
   </div>
   <form novalidate
         [formGroup]="message"
@@ -22,11 +22,8 @@
     </md-input-container>
     <button
       md-raised-button
-      type="submit"
-      [disabled]="message.length === 0">
+      type="submit">
       Отправить
     </button>
   </form>
-
-
 </md-card>

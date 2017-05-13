@@ -1,7 +1,8 @@
 <div class="main-component">
-  <div class="user-list">
     <app-chats-list
+        class="main-component__chats-list"
       (onSelectChat)="onSelectChat($event)"
+      (noChats)="noChats($event)"
       *ngIf="!showContacts"
     >
     </app-chats-list>
@@ -9,7 +10,6 @@
       *ngIf="showContacts"
       (onSelectChat)="onSelectChat($event)"
     ></app-contacts-list>
-  </div>
   <app-chat class="chat"
             *ngIf="currentChat"
             [currentChat]="currentChat"

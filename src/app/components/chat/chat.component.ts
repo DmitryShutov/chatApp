@@ -38,7 +38,8 @@ export class ChatComponent implements OnInit {
         error => console.error(error)
       );
   }
-
+  
+  // TODO не готов сервер, проверить метод после готовности сервера
   onDeleteChat() {
    this.ChatService.deleteChat()
      .subscribe(
@@ -63,6 +64,9 @@ export class ChatComponent implements OnInit {
   */
 
   onSubmit({value}: {value}) {
+    if (!value.message) {
+      return;
+    }
     this.ChatService.sendMessage(value.message)
       .subscribe(
         (response) => console.log(response),

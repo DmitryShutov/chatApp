@@ -12,6 +12,7 @@ export class ChatsListComponent implements OnInit {
   currentChat: Chat;
 
   @Output() onSelectChat = new EventEmitter<Chat>();
+  @Output() noChats = new EventEmitter<boolean>();
 
   constructor(private ChatService: ChatService) { }
 
@@ -22,9 +23,18 @@ export class ChatsListComponent implements OnInit {
   getChatsList() {
     this.ChatService.getChatList()
       .subscribe(
-        list => this.chatList = list,
+        list => this.handleChatList(list),
         error => console.error(error),
       )
+  }
+  
+  handleChatList(list) {
+    this.chatList = list;
+    if (this.chatList.length > 0) {
+      this.onChatSelect(this.chatList[0]);
+    } else {
+      this.noChats.emit(true);
+    }
   }
 
   onChatSelect(chat: Chat) {

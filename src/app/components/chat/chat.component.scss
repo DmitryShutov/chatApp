@@ -4,6 +4,12 @@
   padding: 24px 10px;
   display: flex;
   flex-direction: column;
+  &__header {
+    border-right: 2px solid white;
+    background-color: #697091;
+    color: #ffffff;
+    font-weight: 100;
+  }
   &-name {
     justify-content: space-between;
   }
@@ -17,5 +23,6 @@
   }
   &-delete-chat {
     margin-left: auto;
+    background-color: white;
   }
 }

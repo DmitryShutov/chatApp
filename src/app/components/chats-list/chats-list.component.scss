@@ -1,7 +1,13 @@
 .chat-list {
-  overflow-y: scroll;
+  width: 100%;
+  &__header {
+    border-right: 2px solid white;
+    background-color: #697091;
+    color: #ffffff;
+    font-weight: 100;
+  }
   &__wrapper {
-    position: relative;
+    overflow-y: scroll;
   }
   &__card {
     padding: 15px;
@@ -34,7 +40,6 @@
     font-size: 32px;
     font-weight: 100;
     color: white;
-    position: fixed;
     bottom: 30px;
     right: 30px;
   }

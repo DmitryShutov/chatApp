@@ -20,6 +20,12 @@ export class MainScreenComponent implements OnInit {
   onSelectChat(currentChat: Chat) {
     this.currentChat = currentChat;
   }
+  
+  noChats($event: boolean) {
+    if ($event) {
+      this.showContacts = $event;
+    }
+  }
 
 
 
