@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Chat} from '../../classes/chat';
+import {UIService} from "../../services/ui.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-main-screen',
@@ -10,8 +12,15 @@ export class MainScreenComponent implements OnInit {
 
   currentChat: Chat;
   showContactsList = false;
+  onShowContractsSubscribe: Subscription;
 
-  constructor() { }
+  constructor(private UIService: UIService) {
+    this.onShowContractsSubscribe = UIService.showContact$.subscribe(
+      isShow => {
+        this.showContactsList = isShow;
+      }
+    )
+  }
 
   ngOnInit() {
 
@@ -26,9 +35,4 @@ export class MainScreenComponent implements OnInit {
       this.showContactsList = $event;
     }
   }
-
-
-
-
-
 }

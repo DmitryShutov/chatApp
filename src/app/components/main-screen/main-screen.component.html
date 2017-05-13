@@ -1,18 +1,20 @@
 <div class="main-component">
-    <app-chats-list
-        class="main-component__chats-list"
+  <app-chats-list
+      class="main-component__chats-list"
       (onSelectChat)="onSelectChat($event)"
       (onShowContactsList)="onShowContactsList($event)"
       *ngIf="!showContactsList"
-    >
-    </app-chats-list>
-    <app-contacts-list
+  >
+  </app-chats-list>
+  <app-contacts-list
+      class="main-component__user-list"
       *ngIf="showContactsList"
       (onSelectChat)="onSelectChat($event)"
-    ></app-contacts-list>
-  <app-chat class="chat"
-            *ngIf="currentChat"
-            [currentChat]="currentChat"
+  ></app-contacts-list>
+  <app-chat
+      class="chat"
+      *ngIf="currentChat"
+      [currentChat]="currentChat"
   ></app-chat>
 </div>
 

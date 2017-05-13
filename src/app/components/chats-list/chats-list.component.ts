@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { Chat } from '../../classes/chat';
+import {UIService} from "../../services/ui.service";
 
 @Component({
   selector: 'app-chats-list',
@@ -14,7 +15,7 @@ export class ChatsListComponent implements OnInit {
   @Output() onSelectChat = new EventEmitter<Chat>();
   @Output() showContactsList = new EventEmitter<boolean>();
 
-  constructor(private ChatService: ChatService) { }
+  constructor(private ChatService: ChatService, private UIService: UIService) { }
 
   ngOnInit() {
     this.getChatsList();
@@ -44,7 +45,7 @@ export class ChatsListComponent implements OnInit {
   }
   
   showContacts() {
-    this.showContactsList.emit(true);
+    this.UIService.onShowContract(true);
   }
 
 }

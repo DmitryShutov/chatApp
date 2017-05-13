@@ -5,6 +5,7 @@ import {Chat} from '../../classes/chat';
 import {ChatService} from '../../services/chat.service';
 import {User} from '../../classes/user';
 import {UserDataService} from '../../services/user-data.service';
+import { UIService } from '../../services/ui.service';
 
 @Component({
   selector: 'app-contacts-list',
@@ -23,7 +24,8 @@ export class ContactsListComponent implements OnInit {
 
   constructor(private UserService: UserService,
               private ChatService: ChatService,
-              private UserDataService: UserDataService) {}
+              private UserDataService: UserDataService,
+              private UIService: UIService) {}
 
   ngOnInit() {
     this.getUserList();
@@ -56,5 +58,9 @@ export class ContactsListComponent implements OnInit {
     this.currentChat = new Chat([this.currentUserId, user.id], user.displayname);
     this.ChatService.setCurrentChat(this.currentChat);
     this.onSelectChat.emit(this.currentChat);
+  }
+  
+  hideContacts() {
+    this.UIService.onShowContract(false);
   }
 }
