@@ -21,6 +21,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import {ChatService} from './services/chat.service';
 import { ChatsListComponent } from './components/chats-list/chats-list.component';
 import {LoginGuardService} from './services/login-guard.service';
+import { UIService } from './services/ui.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import {LoginGuardService} from './services/login-guard.service';
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
   ],
-  providers: [ApiService, UserService, UserDataService, ChatService, LoginGuardService],
+  providers: [ApiService, UserService, UserDataService, ChatService, LoginGuardService, UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

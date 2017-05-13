@@ -2,12 +2,12 @@
     <app-chats-list
         class="main-component__chats-list"
       (onSelectChat)="onSelectChat($event)"
-      (noChats)="noChats($event)"
-      *ngIf="!showContacts"
+      (onShowContactsList)="onShowContactsList($event)"
+      *ngIf="!showContactsList"
     >
     </app-chats-list>
     <app-contacts-list
-      *ngIf="showContacts"
+      *ngIf="showContactsList"
       (onSelectChat)="onSelectChat($event)"
     ></app-contacts-list>
   <app-chat class="chat"

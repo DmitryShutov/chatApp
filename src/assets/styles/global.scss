@@ -1,3 +1,5 @@
+$violet: #673ab7;
+
 .position {
   &__center {
     text-align: center;
@@ -10,5 +12,9 @@
 
 .w90 {
   width: 90%;
+}
+
+.button {
+  color: $violet;
 }
 

@@ -9,7 +9,7 @@ import {Chat} from '../../classes/chat';
 export class MainScreenComponent implements OnInit {
 
   currentChat: Chat;
-  showContacts = false;
+  showContactsList = false;
 
   constructor() { }
 
@@ -21,9 +21,9 @@ export class MainScreenComponent implements OnInit {
     this.currentChat = currentChat;
   }
   
-  noChats($event: boolean) {
+  onShowContactsList($event: boolean) {
     if ($event) {
-      this.showContacts = $event;
+      this.showContactsList = $event;
     }
   }
 
