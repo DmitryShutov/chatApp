@@ -3,6 +3,7 @@
 >{{currentChat.name}}
   <a md-mini-fab
     class="chat__main-delete-chat"
+     *ngIf="false"
     (click)="onDeleteChat()"
   ><i class="material-icons">delete</i></a>
 </md-toolbar>
@@ -12,18 +13,25 @@
   <form novalidate
         [formGroup]="message"
         (ngSubmit)="onSubmit()">
-    <md-input-container class="chat__main-form">
+    <div class="chat__main_input-wrapper">
+      <md-input-container class="chat__main-form">
         <textarea
-          mdInput
-          placeholder="Ваше сообщение"
-          type="text"
-          formControlName="newMessage">
+            mdInput
+            placeholder="Ваше сообщение"
+            type="text"
+            rows="4"
+            formControlName="newMessage">
         </textarea>
-    </md-input-container>
-    <button
-      md-raised-button
-      type="submit">
-      Отправить
-    </button>
+      </md-input-container>
+    </div>
+    <md-toolbar
+        class="chat__main__header"
+    >
+      <button
+          md-raised-button
+          type="submit">
+        Отправить
+      </button>
+    </md-toolbar>
   </form>
 </md-card>
