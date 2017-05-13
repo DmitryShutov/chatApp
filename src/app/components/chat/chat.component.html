@@ -11,13 +11,13 @@
   </div>
   <form novalidate
         [formGroup]="message"
-        (ngSubmit)="onSubmit(message)">
+        (ngSubmit)="onSubmit()">
     <md-input-container class="chat__main-form">
         <textarea
           mdInput
           placeholder="Ваше сообщение"
           type="text"
-          formControlName="message">
+          formControlName="newMessage">
         </textarea>
     </md-input-container>
     <button

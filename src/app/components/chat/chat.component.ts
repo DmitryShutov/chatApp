@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.message = new FormGroup({
-      message: new FormControl(''),
+      newMessage: new FormControl(''),
     });
     this.createChat();
   }
@@ -63,11 +63,11 @@ export class ChatComponent implements OnInit {
   }
   */
 
-  onSubmit({value}: {value}) {
-    if (!value.message) {
+  onSubmit() {
+    if (!this.message.value.newMessage) {
       return;
     }
-    this.ChatService.sendMessage(value.message)
+    this.ChatService.sendMessage(this.message.value.newMessage)
       .subscribe(
         (response) => console.log(response),
         error => console.log(error));
