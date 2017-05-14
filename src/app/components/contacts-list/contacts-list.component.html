@@ -2,8 +2,10 @@
   <md-toolbar class="user-list__header">
     <span>Контакты</span>
   </md-toolbar>
-  <div class="user-list__wrapper">
-    <div appPaginator (onScrollDown)="getNextUsers($event)">
+  <div class="user-list__wrapper"
+       appPaginator
+       (onScrollDown)="getNextUsers($event)">
+    <div>
       <div *ngFor="let user of userList">
         <md-card class="user-list__card"
                  *ngIf="user.displayname"
