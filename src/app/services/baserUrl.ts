@@ -1,1 +1,1 @@
-export const baseUrl = 'http://chat.rl.altarix.org';
+export const baseUrl = 'https://chat.rl.altarix.org';
