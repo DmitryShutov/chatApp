@@ -1,1 +1,1 @@
-export const baseUrl = 'https://chat.rl.altarix.org';
+export const baseUrl = 'http://localhost:8080';

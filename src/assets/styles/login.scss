@@ -1,7 +1,8 @@
 .login {
   display: flex;
   justify-content: center;
-  padding-top: 30vh;
+  align-items: center;
+  height: 100vh;
   &__form {
     min-width: 320px;
     &-card {
