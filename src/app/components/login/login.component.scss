@@ -1,0 +1,12 @@
+.login {
+  &__form-card {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__form-input {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+}
